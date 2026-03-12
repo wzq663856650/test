@@ -1,0 +1,27 @@
+{
+	"BUILD_DIR" : "/workspace/build/samples/AdminApp/AdminApp_autogen",
+	"CMAKE_BINARY_DIR" : "/workspace/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspace/build/samples/AdminApp",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspace/samples/AdminApp",
+	"CMAKE_SOURCE_DIR" : "/workspace",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/workspace/build/samples/AdminApp/AdminApp_autogen/include",
+	"INPUTS" : 
+	[
+		"/workspace/samples/AdminApp/Modules/OrderModule/Views/OrderListView.qml",
+		"/workspace/samples/AdminApp/Modules/SettingsModule/Views/SettingsView.qml",
+		"/workspace/samples/AdminApp/Shell/ShellView.qml",
+		"/workspace/samples/AdminApp/Modules/DashboardModule/Views/DashboardView.qml",
+		"/workspace/samples/AdminApp/Modules/OrderModule/Views/OrderDetailView.qml"
+	],
+	"LOCK_FILE" : "/workspace/build/samples/AdminApp/CMakeFiles/AdminApp_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/workspace/build/samples/AdminApp/CMakeFiles/AdminApp_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/workspace/samples/AdminApp/resources.qrc",
+	"VERBOSITY" : 0
+}

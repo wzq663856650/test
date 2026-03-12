@@ -1,0 +1,171 @@
+{
+	"BUILD_DIR" : "/workspace/build/src/QtPrismFramework/QtPrismFramework_autogen",
+	"CMAKE_BINARY_DIR" : "/workspace/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspace/build/src/QtPrismFramework",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspace/src/QtPrismFramework",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : [ "/workspace/src/QtPrismFramework/CMakeLists.txt" ],
+	"CMAKE_SOURCE_DIR" : "/workspace",
+	"DEP_FILE" : "/workspace/build/src/QtPrismFramework/QtPrismFramework_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "QtPrismFramework_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/workspace/src/QtPrismFramework/Modularity/ModuleCatalog.h",
+			"Mu",
+			"FAPVM6YTW7/moc_ModuleCatalog.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Modularity/ModuleManager.h",
+			"Mu",
+			"FAPVM6YTW7/moc_ModuleManager.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Navigation/NavigationJournal.h",
+			"Mu",
+			"ISL6DFDREN/moc_NavigationJournal.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/QtPrismApplication.h",
+			"Mu",
+			"EWIEGA46WW/moc_QtPrismApplication.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Regions/Region.h",
+			"Mu",
+			"K4LGSJCNEU/moc_Region.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Regions/RegionAdapterMappings.h",
+			"Mu",
+			"K4LGSJCNEU/moc_RegionAdapterMappings.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Regions/RegionManager.h",
+			"Mu",
+			"K4LGSJCNEU/moc_RegionManager.cpp",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Views/ViewRegistry.h",
+			"Mu",
+			"UN6PRT6GRQ/moc_ViewRegistry.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/workspace/build/src/QtPrismFramework/QtPrismFramework_autogen/include",
+	"MOC_COMPILATION_FILE" : "/workspace/build/src/QtPrismFramework/QtPrismFramework_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CONCURRENT_LIB",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_OPENGL_LIB",
+		"QT_QMLINTEGRATION_LIB",
+		"QT_QMLMODELS_LIB",
+		"QT_QML_LIB",
+		"QT_QUICK_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/workspace/src/QtPrismFramework",
+		"/workspace/src/QtPrismCore",
+		"/workspace/src/QtPrismContainer",
+		"/workspace/src/QtPrismEvents",
+		"/usr/include/x86_64-linux-gnu/qt6/QtCore",
+		"/usr/include/x86_64-linux-gnu/qt6",
+		"/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+		"/usr/include/x86_64-linux-gnu/qt6/QtQuick",
+		"/usr/include/x86_64-linux-gnu/qt6/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt6/QtQml",
+		"/usr/include/x86_64-linux-gnu/qt6/QtQmlIntegration",
+		"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
+		"/usr/include/x86_64-linux-gnu/qt6/QtQmlModels",
+		"/usr/include/x86_64-linux-gnu/qt6/QtOpenGL",
+		"/usr/include/x86_64-linux-gnu/qt6/QtConcurrent",
+		"/usr/include",
+		"/usr/include/c++/13",
+		"/usr/include/x86_64-linux-gnu/c++/13",
+		"/usr/include/c++/13/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/13/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/g++",
+		"-std=gnu++17",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/workspace/build/src/QtPrismFramework/QtPrismFramework_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/workspace/build/src/QtPrismFramework/CMakeFiles/QtPrismFramework_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/workspace/build/src/QtPrismFramework/CMakeFiles/QtPrismFramework_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/workspace/src/QtPrismFramework/Modularity/ModuleCatalog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Modularity/ModuleManager.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Navigation/NavigationJournal.cpp",
+			"Mu",
+			null
+		],
+		[ "/workspace/src/QtPrismFramework/QtPrismApplication.cpp", "Mu", null ],
+		[ "/workspace/src/QtPrismFramework/Regions/Region.cpp", "Mu", null ],
+		[
+			"/workspace/src/QtPrismFramework/Regions/RegionAdapterMappings.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/workspace/src/QtPrismFramework/Regions/RegionManager.cpp",
+			"Mu",
+			null
+		],
+		[ "/workspace/src/QtPrismFramework/Views/ViewRegistry.cpp", "Mu", null ]
+	],
+	"VERBOSITY" : 0
+}

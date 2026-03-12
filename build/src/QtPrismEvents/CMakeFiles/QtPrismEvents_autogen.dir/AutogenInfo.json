@@ -1,0 +1,82 @@
+{
+	"BUILD_DIR" : "/workspace/build/src/QtPrismEvents/QtPrismEvents_autogen",
+	"CMAKE_BINARY_DIR" : "/workspace/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspace/build/src/QtPrismEvents",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspace/src/QtPrismEvents",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : [ "/workspace/src/QtPrismEvents/CMakeLists.txt" ],
+	"CMAKE_SOURCE_DIR" : "/workspace",
+	"DEP_FILE" : "/workspace/build/src/QtPrismEvents/QtPrismEvents_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "QtPrismEvents_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/workspace/src/QtPrismEvents/EventAggregator.h",
+			"Mu",
+			"EWIEGA46WW/moc_EventAggregator.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/workspace/build/src/QtPrismEvents/QtPrismEvents_autogen/include",
+	"MOC_COMPILATION_FILE" : "/workspace/build/src/QtPrismEvents/QtPrismEvents_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CONCURRENT_LIB", "QT_CORE_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/workspace/src/QtPrismEvents",
+		"/workspace/src/QtPrismContainer",
+		"/usr/include/x86_64-linux-gnu/qt6/QtCore",
+		"/usr/include/x86_64-linux-gnu/qt6",
+		"/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+		"/usr/include/x86_64-linux-gnu/qt6/QtConcurrent",
+		"/usr/include/c++/13",
+		"/usr/include/x86_64-linux-gnu/c++/13",
+		"/usr/include/c++/13/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/13/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/g++",
+		"-std=gnu++17",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/workspace/build/src/QtPrismEvents/QtPrismEvents_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/workspace/build/src/QtPrismEvents/CMakeFiles/QtPrismEvents_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/workspace/build/src/QtPrismEvents/CMakeFiles/QtPrismEvents_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/workspace/src/QtPrismEvents/EventAggregator.cpp", "Mu", null ]
+	],
+	"VERBOSITY" : 0
+}

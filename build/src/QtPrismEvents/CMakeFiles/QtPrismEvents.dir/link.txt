@@ -1,0 +1,2 @@
+/usr/bin/ar qc libQtPrismEvents.a CMakeFiles/QtPrismEvents.dir/QtPrismEvents_autogen/mocs_compilation.cpp.o CMakeFiles/QtPrismEvents.dir/EventAggregator.cpp.o
+/usr/bin/ranlib libQtPrismEvents.a
