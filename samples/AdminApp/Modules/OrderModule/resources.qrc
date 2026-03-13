@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qtprism/modules">
+        <file alias="OrderListView.qml">Views/OrderListView.qml</file>
+        <file alias="OrderDetailView.qml">Views/OrderDetailView.qml</file>
+    </qresource>
+</RCC>

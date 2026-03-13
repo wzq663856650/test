@@ -23,6 +23,6 @@ void DashboardModule::OnInitialized(IContainerProvider* containerProvider)
     if (viewRegistry)
     {
         viewRegistry->RegisterView("DashboardView",
-            QUrl("qrc:/qtprism/DashboardView.qml"));
+            QUrl("qrc:/qtprism/modules/DashboardView.qml"));
     }
 }

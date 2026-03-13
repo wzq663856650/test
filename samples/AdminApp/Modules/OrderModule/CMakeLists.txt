@@ -3,6 +3,7 @@ add_library(OrderModule SHARED
     Services/OrderServiceImpl.cpp
     ViewModels/OrderListViewModel.cpp
     ViewModels/OrderDetailViewModel.cpp
+    resources.qrc
 )
 
 target_include_directories(OrderModule PRIVATE

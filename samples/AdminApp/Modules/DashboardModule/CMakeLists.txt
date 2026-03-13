@@ -1,5 +1,6 @@
 add_library(DashboardModule SHARED
     DashboardModule.cpp
+    resources.qrc
 )
 
 target_include_directories(DashboardModule PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

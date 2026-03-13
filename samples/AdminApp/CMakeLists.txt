@@ -1,6 +1,7 @@
 add_executable(AdminApp
     main.cpp
     App.cpp
+    Shell/ShellController.cpp
     resources.qrc
 )
 

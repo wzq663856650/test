@@ -1,5 +1,6 @@
 add_library(SettingsModule SHARED
     SettingsModule.cpp
+    resources.qrc
 )
 
 target_include_directories(SettingsModule PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

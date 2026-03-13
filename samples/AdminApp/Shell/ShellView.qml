@@ -40,7 +40,7 @@ ApplicationWindow {
         anchors.fill: parent
         spacing: 0
 
-        // Sidebar Region
+        // Sidebar — driven entirely by shellController.navigationItems
         Rectangle {
             Layout.preferredWidth: 200
             Layout.fillHeight: true
@@ -52,11 +52,7 @@ ApplicationWindow {
                 spacing: 4
 
                 Repeater {
-                    model: ListModel {
-                        ListElement { name: "Dashboard"; viewId: "DashboardView"; icon: "\u2302" }
-                        ListElement { name: "Orders"; viewId: "OrderListView"; icon: "\u2637" }
-                        ListElement { name: "Settings"; viewId: "SettingsView"; icon: "\u2699" }
-                    }
+                    model: shellController ? shellController.navigationItems : []
 
                     delegate: Rectangle {
                         Layout.fillWidth: true
@@ -64,23 +60,19 @@ ApplicationWindow {
                         Layout.rightMargin: 8
                         height: 40
                         radius: 6
+                        opacity: modelData.available ? 1.0 : 0.4
                         color: navMouse.containsMouse ? "#2d3748" :
-                               (mainLoader.currentView === model.viewId ? "#4a5568" : "transparent")
+                               (shellController && shellController.currentViewName === modelData.viewId
+                                   ? "#4a5568" : "transparent")
 
                         MouseArea {
                             id: navMouse
                             anchors.fill: parent
                             hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
                             onClicked: {
-                                console.log("[Shell] Navigate to: " + model.viewId)
-                                mainLoader.currentView = model.viewId
-
-                                if (model.viewId === "SettingsView" && typeof moduleManager !== 'undefined') {
-                                    moduleManager.LoadModule("SettingsModule")
-                                }
-
-                                if (regionManager) {
-                                    regionManager.RequestNavigate("MainRegion", model.viewId, {})
+                                if (shellController) {
+                                    shellController.navigateTo(modelData.viewId)
                                 }
                             }
                         }
@@ -91,16 +83,25 @@ ApplicationWindow {
                             spacing: 10
 
                             Label {
-                                text: model.icon
+                                text: modelData.icon
                                 color: "#a0aec0"
                                 font.pixelSize: 16
                             }
 
                             Label {
-                                text: model.name
-                                color: mainLoader.currentView === model.viewId ? "white" : "#a0aec0"
+                                text: modelData.name
+                                color: shellController
+                                       && shellController.currentViewName === modelData.viewId
+                                           ? "white" : "#a0aec0"
                                 font.pixelSize: 14
                                 Layout.fillWidth: true
+                            }
+
+                            Label {
+                                visible: !modelData.available && modelData.isOnDemand
+                                text: "[load]"
+                                color: "#718096"
+                                font.pixelSize: 10
                             }
                         }
                     }
@@ -127,7 +128,7 @@ ApplicationWindow {
             }
         }
 
-        // Main Region
+        // Main content — Loader source from ViewRegistry via ShellController
         Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -136,23 +137,17 @@ ApplicationWindow {
             Loader {
                 id: mainLoader
                 anchors.fill: parent
+                source: shellController ? shellController.currentViewUrl : ""
+            }
 
-                property string currentView: "DashboardView"
-
-                source: {
-                    switch (currentView) {
-                    case "DashboardView":
-                        return "qrc:/qtprism/DashboardView.qml"
-                    case "OrderListView":
-                        return "qrc:/qtprism/OrderListView.qml"
-                    case "OrderDetailView":
-                        return "qrc:/qtprism/OrderDetailView.qml"
-                    case "SettingsView":
-                        return "qrc:/qtprism/SettingsView.qml"
-                    default:
-                        return "qrc:/qtprism/DashboardView.qml"
-                    }
-                }
+            // Placeholder when no view is loaded
+            Label {
+                anchors.centerIn: parent
+                visible: !mainLoader.source || mainLoader.source == ""
+                text: "No modules loaded.\nPlease check your plugins directory."
+                color: "#a0aec0"
+                font.pixelSize: 16
+                horizontalAlignment: Text.AlignHCenter
             }
         }
     }
@@ -182,7 +177,9 @@ ApplicationWindow {
             Rectangle { width: 1; height: 14; color: "#cbd5e0" }
 
             Label {
-                text: "Modules: 3"
+                text: shellController
+                      ? "Modules: " + shellController.loadedModuleCount
+                      : "Modules: 0"
                 color: "#a0aec0"
                 font.pixelSize: 11
                 Layout.rightMargin: 12

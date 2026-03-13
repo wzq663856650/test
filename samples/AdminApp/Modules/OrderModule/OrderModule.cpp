@@ -27,9 +27,9 @@ void OrderModule::OnInitialized(IContainerProvider* containerProvider)
     if (viewRegistry)
     {
         viewRegistry->RegisterView("OrderListView",
-            QUrl("qrc:/qtprism/OrderListView.qml"));
+            QUrl("qrc:/qtprism/modules/OrderListView.qml"));
         viewRegistry->RegisterView("OrderDetailView",
-            QUrl("qrc:/qtprism/OrderDetailView.qml"));
+            QUrl("qrc:/qtprism/modules/OrderDetailView.qml"));
     }
 
     auto ea = containerProvider->Resolve<IEventAggregator>();

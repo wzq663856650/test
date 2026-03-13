@@ -2,6 +2,8 @@
 
 #include "QtPrismApplication.h"
 
+class ShellController;
+
 class App : public QtPrismApplication
 {
     Q_OBJECT
@@ -18,4 +20,7 @@ protected:
 
 private:
     QString pluginDir() const;
+    QString pluginFileName(const QString& baseName) const;
+
+    ShellController* m_shellController = nullptr;
 };

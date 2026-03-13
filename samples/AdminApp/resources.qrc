@@ -1,9 +1,5 @@
 <RCC>
     <qresource prefix="/qtprism">
         <file alias="ShellView.qml">Shell/ShellView.qml</file>
-        <file alias="DashboardView.qml">Modules/DashboardModule/Views/DashboardView.qml</file>
-        <file alias="OrderListView.qml">Modules/OrderModule/Views/OrderListView.qml</file>
-        <file alias="OrderDetailView.qml">Modules/OrderModule/Views/OrderDetailView.qml</file>
-        <file alias="SettingsView.qml">Modules/SettingsModule/Views/SettingsView.qml</file>
     </qresource>
 </RCC>

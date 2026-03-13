@@ -23,6 +23,6 @@ void SettingsModule::OnInitialized(IContainerProvider* containerProvider)
     if (viewRegistry)
     {
         viewRegistry->RegisterView("SettingsView",
-            QUrl("qrc:/qtprism/SettingsView.qml"));
+            QUrl("qrc:/qtprism/modules/SettingsView.qml"));
     }
 }

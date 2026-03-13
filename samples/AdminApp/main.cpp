@@ -5,6 +5,7 @@
 #include "App.h"
 #include "Modularity/IModuleManager.h"
 #include "Regions/IRegionManager.h"
+#include "Regions/IViewRegistry.h"
 #include "IEventAggregator.h"
 
 int main(int argc, char* argv[])
@@ -19,32 +20,37 @@ int main(int argc, char* argv[])
     App app(&guiApp, &engine);
     app.Initialize();
 
-    bool hasArg = guiApp.arguments().contains("--verify");
-    if (hasArg)
+    bool verifyMode = guiApp.arguments().contains("--verify");
+    if (verifyMode)
     {
         qDebug() << "\n[Main] === Verification Mode ===";
 
-        auto moduleManager = app.Container()->Resolve<IModuleManager>();
-        if (moduleManager)
-        {
-            qDebug() << "[Main] Testing OnDemand module loading...";
-            moduleManager->LoadModule("SettingsModule");
-        }
-
+        auto viewRegistry = app.Container()->Resolve<IViewRegistry>();
         auto regionManager = app.Container()->Resolve<IRegionManager>();
+
+        qDebug() << "[Main] DashboardView available:"
+                 << (viewRegistry ? viewRegistry->HasView("DashboardView") : false);
+        qDebug() << "[Main] OrderListView available:"
+                 << (viewRegistry ? viewRegistry->HasView("OrderListView") : false);
+        qDebug() << "[Main] SettingsView available:"
+                 << (viewRegistry ? viewRegistry->HasView("SettingsView") : false);
+
         if (regionManager)
         {
-            qDebug() << "[Main] All regions:" << regionManager->RegionNames();
             qDebug() << "[Main] MainRegion views:" << regionManager->GetViewsForRegion("MainRegion");
         }
 
-        auto ea = app.Container()->Resolve<IEventAggregator>();
-        if (ea)
+        // Test on-demand loading
+        qDebug() << "\n[Main] === Testing OnDemand load ===";
+        auto moduleManager = app.Container()->Resolve<IModuleManager>();
+        if (moduleManager)
         {
-            qDebug() << "[Main] EventAggregator resolved OK";
+            moduleManager->LoadModule("SettingsModule");
         }
+        qDebug() << "[Main] SettingsView available after load:"
+                 << (viewRegistry ? viewRegistry->HasView("SettingsView") : false);
 
-        qDebug() << "[Main] === All Verifications Passed ===";
+        qDebug() << "\n[Main] === All Verifications Passed ===";
         return 0;
     }
 

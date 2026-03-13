@@ -25,47 +25,38 @@ void QtPrismApplication::Initialize()
 {
     qDebug() << "[QtPrism] ========== Initialization Started ==========";
 
-    // Step 1: Create container
     m_container = CreateContainerExtension();
     ContainerLocator::SetContainerExtension(m_container);
     qDebug() << "[QtPrism] Step 1: Container created";
 
-    // Step 2: Create module catalog
     m_catalog = CreateModuleCatalog();
     qDebug() << "[QtPrism] Step 2: Module catalog created";
 
-    // Step 3: Register framework types
     RegisterRequiredTypes(m_container.get());
     qDebug() << "[QtPrism] Step 3: Required types registered";
 
-    // Step 4: User types
     RegisterTypes(m_container.get());
     qDebug() << "[QtPrism] Step 4: User types registered";
 
-    // Step 5: Configure modules
     ConfigureModuleCatalog(m_catalog.get());
     qDebug() << "[QtPrism] Step 5: Module catalog configured";
 
-    // Step 6: Register QML types
     RegisterFrameworkQmlTypes();
     qDebug() << "[QtPrism] Step 6: QML types registered";
 
-    // Step 7: Create Shell
+    // Step 7: Initialize modules BEFORE loading Shell
+    InitializeModules();
+    qDebug() << "[QtPrism] Step 7: Modules initialized";
+
+    // Step 8: Let subclass set up context properties, regions, controllers
+    OnInitialized();
+    qDebug() << "[QtPrism] Step 8: Application initialized";
+
+    // Step 9: Load Shell QML LAST — all context properties are now ready
     QUrl shellUrl = CreateShell();
-    qDebug() << "[QtPrism] Step 7: Loading shell:" << shellUrl;
-
-    // Expose key services to QML
-    auto regionManager = m_container->Resolve<IRegionManager>();
-    m_engine->rootContext()->setContextProperty("regionManager", regionManager.get());
-
+    qDebug() << "[QtPrism] Step 9: Loading shell:" << shellUrl;
     m_engine->load(shellUrl);
 
-    // Step 8: Initialize modules
-    InitializeModules();
-    qDebug() << "[QtPrism] Step 8: Modules initialized";
-
-    // Step 9: Complete
-    OnInitialized();
     qDebug() << "[QtPrism] ========== Initialization Complete ==========";
 }
 
@@ -104,7 +95,6 @@ void QtPrismApplication::InitializeModules()
 
 void QtPrismApplication::RegisterFrameworkQmlTypes()
 {
-    // Framework QML types are registered via context properties
 }
 
 void QtPrismApplication::OnInitialized()
