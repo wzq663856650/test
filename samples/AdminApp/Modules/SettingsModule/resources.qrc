@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/qtprism/modules">
+        <file alias="SettingsView.qml">Views/SettingsView.qml</file>
+    </qresource>
+</RCC>

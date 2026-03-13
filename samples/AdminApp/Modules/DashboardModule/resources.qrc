@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/qtprism/modules">
+        <file alias="DashboardView.qml">Views/DashboardView.qml</file>
+    </qresource>
+</RCC>
