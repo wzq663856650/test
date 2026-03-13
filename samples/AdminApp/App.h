@@ -15,4 +15,7 @@ protected:
     void ConfigureModuleCatalog(IModuleCatalog* catalog) override;
     QUrl CreateShell() override;
     void OnInitialized() override;
+
+private:
+    QString pluginDir() const;
 };

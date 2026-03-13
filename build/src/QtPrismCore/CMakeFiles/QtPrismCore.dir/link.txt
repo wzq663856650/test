@@ -1,2 +1,0 @@
-/usr/bin/ar qc libQtPrismCore.a CMakeFiles/QtPrismCore.dir/QtPrismCore_autogen/mocs_compilation.cpp.o CMakeFiles/QtPrismCore.dir/Navigation/NavigationContext.cpp.o CMakeFiles/QtPrismCore.dir/Mvvm/ViewModelBase.cpp.o CMakeFiles/QtPrismCore.dir/Regions/IRegion.cpp.o CMakeFiles/QtPrismCore.dir/Regions/IRegionManager.cpp.o CMakeFiles/QtPrismCore.dir/Modularity/IModuleManager.cpp.o
-/usr/bin/ranlib libQtPrismCore.a

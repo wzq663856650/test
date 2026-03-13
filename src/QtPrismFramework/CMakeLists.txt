@@ -10,4 +10,4 @@ add_library(QtPrismFramework STATIC
 )
 
 target_include_directories(QtPrismFramework PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(QtPrismFramework PUBLIC Qt6::Core Qt6::Quick Qt6::Qml QtPrismCore)
+target_link_libraries(QtPrismFramework PUBLIC Qt5::Core Qt5::Quick Qt5::Qml QtPrismCore)

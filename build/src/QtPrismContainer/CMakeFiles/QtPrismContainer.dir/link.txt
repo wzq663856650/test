@@ -1,2 +1,0 @@
-/usr/bin/ar qc libQtPrismContainer.a CMakeFiles/QtPrismContainer.dir/QtPrismContainer_autogen/mocs_compilation.cpp.o CMakeFiles/QtPrismContainer.dir/ContainerLocator.cpp.o CMakeFiles/QtPrismContainer.dir/QtPrismContainerImpl.cpp.o
-/usr/bin/ranlib libQtPrismContainer.a

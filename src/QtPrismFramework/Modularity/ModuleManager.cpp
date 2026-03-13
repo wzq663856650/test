@@ -1,6 +1,8 @@
 #include "ModuleManager.h"
 #include <QDebug>
 #include <QFileInfo>
+#include <QJsonObject>
+#include <QJsonArray>
 
 ModuleManager::ModuleManager(
     std::shared_ptr<IModuleCatalog> catalog,
@@ -14,7 +16,12 @@ ModuleManager::ModuleManager(
 
 ModuleManager::~ModuleManager()
 {
-    qDeleteAll(m_loaders);
+    for (auto* loader : m_loaders)
+    {
+        loader->unload();
+        delete loader;
+    }
+    m_loaders.clear();
 }
 
 void ModuleManager::Run()
@@ -42,7 +49,7 @@ void ModuleManager::LoadModule(const QString& moduleName)
 {
     if (m_loadedModules.contains(moduleName))
     {
-        qDebug() << "Module already loaded:" << moduleName;
+        qDebug() << "[QtPrism] Module already loaded:" << moduleName;
         return;
     }
 
@@ -51,7 +58,6 @@ void ModuleManager::LoadModule(const QString& moduleName)
     {
         if (info.moduleName == moduleName)
         {
-            // Load dependencies first
             for (const auto& dep : info.dependsOn)
             {
                 if (!m_loadedModules.contains(dep))
@@ -64,7 +70,61 @@ void ModuleManager::LoadModule(const QString& moduleName)
         }
     }
 
-    emit moduleLoadFailed(moduleName, "Module not found in catalog");
+    QString error = QString("Module not found in catalog: %1").arg(moduleName);
+    qWarning() << "[QtPrism]" << error;
+    emit moduleLoadFailed(moduleName, error);
+}
+
+IModule* ModuleManager::LoadPlugin(const QString& pluginPath)
+{
+    if (!QFileInfo::exists(pluginPath))
+    {
+        qWarning() << "[QtPrism] Plugin file not found:" << pluginPath;
+        return nullptr;
+    }
+
+    auto* loader = new QPluginLoader(pluginPath, this);
+
+    QJsonObject metaData = loader->metaData().value("MetaData").toObject();
+    qDebug() << "[QtPrism] Plugin metadata:" << metaData;
+
+    if (!loader->load())
+    {
+        qWarning() << "[QtPrism] Failed to load plugin:" << pluginPath
+                    << "-" << loader->errorString();
+        delete loader;
+        return nullptr;
+    }
+
+    QObject* instance = loader->instance();
+    if (!instance)
+    {
+        qWarning() << "[QtPrism] Plugin instance is null:" << pluginPath;
+        loader->unload();
+        delete loader;
+        return nullptr;
+    }
+
+    IModule* module = qobject_cast<IModule*>(instance);
+    if (!module)
+    {
+        qWarning() << "[QtPrism] Plugin does not implement IModule:" << pluginPath;
+        loader->unload();
+        delete loader;
+        return nullptr;
+    }
+
+    QString moduleName = metaData.value("moduleName").toString();
+    if (moduleName.isEmpty())
+    {
+        moduleName = QFileInfo(pluginPath).baseName();
+    }
+
+    m_loaders[moduleName] = loader;
+    qDebug() << "[QtPrism] Plugin loaded successfully:" << pluginPath
+             << "(module:" << moduleName << ")";
+
+    return module;
 }
 
 void ModuleManager::InitializeModule(ModuleInfo& info)
@@ -75,48 +135,19 @@ void ModuleManager::InitializeModule(ModuleInfo& info)
     }
 
     info.state = ModuleState::ReadyForInitialization;
-    qDebug() << "[QtPrism] Loading module:" << info.moduleName;
+    qDebug() << "[QtPrism] === Loading module:" << info.moduleName << "===";
 
     IModule* module = nullptr;
 
-    if (!info.ref.isEmpty() && QFileInfo::exists(info.ref))
+    if (!info.ref.isEmpty())
     {
-        auto* loader = new QPluginLoader(info.ref, this);
-        if (loader->load())
-        {
-            QObject* instance = loader->instance();
-            module = qobject_cast<IModule*>(instance);
-            if (module)
-            {
-                m_loaders[info.moduleName] = loader;
-            }
-            else
-            {
-                qWarning() << "[QtPrism] Plugin does not implement IModule:" << info.ref;
-                delete loader;
-            }
-        }
-        else
-        {
-            qWarning() << "[QtPrism] Failed to load plugin:" << loader->errorString();
-            delete loader;
-        }
+        module = LoadPlugin(info.ref);
     }
 
     if (!module)
     {
-        // Try to resolve from container (for statically linked modules)
-        auto resolved = m_container->ResolveNamedImpl(
-            std::type_index(typeid(IModule)), info.moduleName);
-        if (resolved)
-        {
-            module = static_cast<IModule*>(resolved.get());
-        }
-    }
-
-    if (!module)
-    {
-        QString error = QString("Could not load module: %1").arg(info.moduleName);
+        QString error = QString("Could not load module plugin: %1 (path: %2)")
+                            .arg(info.moduleName, info.ref);
         qWarning() << "[QtPrism]" << error;
         emit moduleLoadFailed(info.moduleName, error);
         return;
@@ -124,12 +155,15 @@ void ModuleManager::InitializeModule(ModuleInfo& info)
 
     info.state = ModuleState::Initializing;
 
+    qDebug() << "[QtPrism] Calling RegisterTypes for:" << info.moduleName;
     module->RegisterTypes(m_container.get());
+
+    qDebug() << "[QtPrism] Calling OnInitialized for:" << info.moduleName;
     module->OnInitialized(m_container.get());
 
     info.state = ModuleState::Initialized;
     m_loadedModules[info.moduleName] = module;
 
-    qDebug() << "[QtPrism] Module initialized:" << info.moduleName;
+    qDebug() << "[QtPrism] === Module initialized:" << info.moduleName << "===";
     emit moduleLoaded(info.moduleName);
 }

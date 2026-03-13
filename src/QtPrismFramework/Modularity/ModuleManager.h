@@ -24,6 +24,7 @@ public:
 
 private:
     void InitializeModule(ModuleInfo& info);
+    IModule* LoadPlugin(const QString& pluginPath);
 
     std::shared_ptr<IModuleCatalog> m_catalog;
     std::shared_ptr<IContainerExtension> m_container;

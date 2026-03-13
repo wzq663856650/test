@@ -4,9 +4,17 @@
 #include "IContainerRegistry.h"
 #include "IContainerProvider.h"
 
-class SettingsModule : public IModule
+#include <QObject>
+
+class SettingsModule : public QObject, public IModule
 {
+    Q_OBJECT
+    Q_INTERFACES(IModule)
+    Q_PLUGIN_METADATA(IID QtPrism_IModule_iid FILE "settings_module.json")
+
 public:
+    explicit SettingsModule(QObject* parent = nullptr) : QObject(parent) {}
+
     void RegisterTypes(IContainerRegistry* containerRegistry) override;
     void OnInitialized(IContainerProvider* containerProvider) override;
 };

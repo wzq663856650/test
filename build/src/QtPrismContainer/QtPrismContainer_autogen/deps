@@ -1,7 +1,0 @@
-QtPrismContainer_autogen/timestamp: \
-	/workspace/src/QtPrismContainer/CMakeLists.txt \
-	/workspace/src/QtPrismContainer/ContainerLocator.cpp \
-	/workspace/src/QtPrismContainer/ContainerLocator.h \
-	/workspace/src/QtPrismContainer/QtPrismContainerImpl.cpp \
-	/workspace/src/QtPrismContainer/QtPrismContainerImpl.h \
-	/usr/bin/cmake

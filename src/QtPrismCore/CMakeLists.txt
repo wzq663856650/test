@@ -7,4 +7,4 @@ add_library(QtPrismCore STATIC
 )
 
 target_include_directories(QtPrismCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(QtPrismCore PUBLIC Qt6::Core QtPrismContainer QtPrismEvents)
+target_link_libraries(QtPrismCore PUBLIC Qt5::Core QtPrismContainer QtPrismEvents)

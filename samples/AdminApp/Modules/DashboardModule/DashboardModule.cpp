@@ -1,8 +1,6 @@
 #include "DashboardModule.h"
-#include "ViewModels/DashboardViewModel.h"
 #include "Regions/IRegionManager.h"
 #include "Regions/IViewRegistry.h"
-#include "IEventAggregator.h"
 #include <QDebug>
 
 void DashboardModule::RegisterTypes(IContainerRegistry* containerRegistry)

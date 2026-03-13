@@ -1,5 +1,0 @@
-QtPrismEvents_autogen/timestamp: \
-	/workspace/src/QtPrismEvents/CMakeLists.txt \
-	/workspace/src/QtPrismEvents/EventAggregator.cpp \
-	/workspace/src/QtPrismEvents/EventAggregator.h \
-	/usr/bin/cmake
